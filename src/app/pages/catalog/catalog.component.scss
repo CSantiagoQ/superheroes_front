@@ -1,0 +1,127 @@
+.catalog-header {
+  text-align: center;
+  margin-bottom: 40px;
+  h2 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 8px;
+    font-weight: 800;
+  }
+
+  p {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+  }
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  padding: 10px;
+}
+.hero-card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    .card-image .overlay {
+      opacity: 1; // Muestra el botón al hacer hover
+    }
+    .card-image img {
+      transform: scale(1.1);
+    }
+  }
+  .card-image {
+    position: relative;
+    height: 250px;
+    width: 100%;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: top;
+      transition: transform 0.5s ease;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3); // Oscurece sutilmente
+
+      justify-content: flex-end; // Empuja al botón a la derecha
+      align-items: flex-start; // Empuja al botón hacia arriba
+      padding: 12px; // Espacio desde la esquina
+      opacity: 1; // Si quieres que se vea siempre, déjalo en 1
+      //transition: opacity 0.3s ease;
+      z-index: 2;
+      // EL BOTÓN AHORA ESTÁ AQUÍ ADENTRO
+      .btn-fav {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #e74c3c;
+        border: none;
+        width: 40px; // Lo hacemos circular
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.2s ease;
+        &:hover {
+          background: white;
+          box-shadow: 0 0 10px rgba(255, 0, 0, 0.4);
+        }
+        &.is-fav {
+          background-color: #e74c3c !important;
+          color: #ffffff !important;
+          transform: scale(1.1);
+          box-shadow: 0 0 15px rgba(231, 76, 60, 0.5);
+        }
+      }
+    }
+  }
+  .card-content {
+    padding: 20px;
+    flex-grow: 1;
+    h3 {
+      margin: 0 0 8px 0;
+      color: #2c3e50;
+      font-size: 1.4rem;
+    }
+    .power-tag {
+      display: inline-block;
+      background: #eef2f7;
+      color: #3498db;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+
+      border: 1px solid #d1d9e6;
+    }
+  }
+}
+.loader,
+.empty-msg {
+  text-align: center;
+  padding: 60px;
+  font-size: 1.2rem;
+  color: #95a5a6;
+  background: #fff;
+  border-radius: 12px;
+  margin-top: 20px;
+}
