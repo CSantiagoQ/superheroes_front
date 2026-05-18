@@ -6,27 +6,21 @@
       <label>Nombre Completo</label>
       <input type="text" formControlName="nombre" placeholder="Ej. Tony Stark" />
       @if (registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched) {
-        <span class="error">
-          El nombre es requerido (mín. 3 caracteres).
-        </span>
+        <span class="error"> El nombre es requerido (mín. 3 caracteres). </span>
       }
     </div>
     <div class="form-group">
       <label>Correo Electrónico</label>
       <input type="email" formControlName="email" placeholder="heroe@avengers.com" />
       @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
-        <span class="error">
-          Ingresa un correo válido.
-        </span>
+        <span class="error"> Ingresa un correo válido. </span>
       }
     </div>
     <div class="form-group">
       <label>Contraseña</label>
       <input type="password" formControlName="password" placeholder="******" />
       @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
-        <span class="error">
-          Mínimo 6 caracteres.
-        </span>
+        <span class="error"> Mínimo 6 caracteres. </span>
       }
     </div>
     <button type="submit" [disabled]="registerForm.invalid" class="btn-submit">

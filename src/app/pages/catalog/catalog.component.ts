@@ -44,6 +44,11 @@ export class CatalogComponent implements OnInit {
     });
   }
   toggleFavorite(heroe: Heroe) {
+    if (heroe.id == null) {
+      this.notify.show('No se pudo identificar el h�roe seleccionado', 'error');
+      return;
+    }
+
     if (heroe.esFavorito) {
       // Si ya es favorito, lo eliminamos
       this.favService.removeFavorite(heroe.id).subscribe({
@@ -70,6 +75,11 @@ export class CatalogComponent implements OnInit {
       this.notify.show('¡ALTO AHÍ! Inicia sesión primero 🔒', 'info');
       return;
     }
+    if (heroes.id == null) {
+      this.notify.show('No se pudo identificar el h�roe seleccionado', 'error');
+      return;
+    }
+
     console.log('Añadiendo a favoritos el héroe con ID:', heroes.id);
     // 2. Si está logueado, procedemos con la petición
     this.heroesService.addFavorite(heroes.id).subscribe({
@@ -86,7 +96,7 @@ export class CatalogComponent implements OnInit {
         }
         this.notify.show(`${heroes.nombre} añadido a tus favoritos ❤️`, 'success');
 
-        heroes.esFavorite = true;
+        heroes.esFavorito = true;
         this.cdr.detectChanges(); //esto hace que angular se de cuenta del cambio
       },
       error: (err: { status?: number }) => {

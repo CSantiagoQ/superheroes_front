@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-// Define un tipo de interfaz para la respuesta
+import { Observable, throwError } from 'rxjs';
+
 export interface Heroe {
   id?: number;
   nombre: string;
@@ -21,26 +21,25 @@ interface ApiMessageResponse {
   providedIn: 'root',
 })
 export class HeroesService {
-  // Usamos /api y el proxy se encarga de redirigir a http://localhost:3000/api
   private readonly API_URL = '/api';
   private http = inject(HttpClient);
+
   getCatalog(): Observable<Heroe[]> {
-    console.log('Llamando a getCatalog');
-    console.log(`URL de la API: ${this.API_URL}/catalog`);
     return this.http.get<Heroe[]>(`${this.API_URL}/heroes/catalog`);
   }
+
   addFavorite(heroId: number): Observable<ApiMessageResponse> {
-    // 1. Obtener el token del localStorage, esto se agrega después del login
-    const token = localStorage.getItem('token');
-    if (!token || token === '') {
-      throw new Error('No se encontró el token de autenticación');
+    const token = this.getToken();
+    if (!token) {
+      return throwError(() => new Error('No se encontro el token de autenticacion'));
     }
-    // 2. Crear las cabeceras con el formato 'Authorization: Bearer TOKEN'
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.post(`${this.API_URL}/heroes/favorites`, { heroId }, { headers });
+    return this.http.post<ApiMessageResponse>(`${this.API_URL}/heroes/favorites`, { heroId }, { headers });
   }
+
   createHero(hero: {
     nombre: string;
     poder: string;
@@ -57,17 +56,24 @@ export class HeroesService {
       !hero.debilidad ||
       !hero.imagen_url
     ) {
-      throw new Error('Todos los campos del héroe son obligatorios');
+      return throwError(() => new Error('Todos los campos del heroe son obligatorios'));
     }
-    // 1. Obtener el token del localStorage, esto se agrega después del login
-    const token = localStorage.getItem('token');
-    if (!token || token === '') {
-      throw new Error('No se encontró el token de autenticación');
+
+    const token = this.getToken();
+    if (!token) {
+      return throwError(() => new Error('No se encontro el token de autenticacion'));
     }
-    // 2. Crear las cabeceras con el formato 'Authorization: Bearer TOKEN'
+
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
     return this.http.post<Heroe>(`${this.API_URL}/heroes`, hero, { headers });
+  }
+
+  private getToken(): string | null {
+    if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+      return null;
+    }
+    return localStorage.getItem('token');
   }
 }

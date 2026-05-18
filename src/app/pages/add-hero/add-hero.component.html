@@ -53,7 +53,9 @@
           <button type="button" class="btn-browse" (click)="fileInput.click()">
             🔍 Buscar en assets/images
           </button>
-          @if (fileNameSelected) {`r`n            <span class="file-name"> ?? {{ fileNameSelected }} </span>`r`n          }
+          @if (fileNameSelected) {
+            `r`n <span class="file-name"> ?? {{ fileNameSelected }} </span>`r`n
+          }
         </div>
         <small>Nota: La imagen debe existir físicamente en <code>src/assets/images/</code></small>
       </div>
@@ -63,5 +65,3 @@
     </form>
   </div>
 </div>
-
-

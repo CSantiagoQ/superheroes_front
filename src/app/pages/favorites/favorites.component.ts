@@ -44,6 +44,11 @@ export class FavoritesComponent implements OnInit {
     });
   }
   removeFromFavorites(heroe: Heroe) {
+    if (heroe.id == null) {
+      this.notify.show('No se pudo identificar el héroe seleccionado', 'error');
+      return;
+    }
+
     this.favService.removeFavorite(heroe.id).subscribe({
       next: () => {
         // Filtramos el array para quitarlo de la vista inmediatamente
