@@ -45,7 +45,7 @@ export class AddHeroComponent {
   onSubmit() {
     this.heroService.createHero(this.heroData).subscribe({
       next: () => {
-        this.notify.show(`¡${this.heroData.nombre} ha sido reclutado! ️`, 'success');
+        this.notify.show(`¡Se inlcuyó a ${this.heroData.nombre} ! ️`, 'success');
         this.router.navigate(['/dashboard']); // Ajusta según tu ruta de catálogo
       },
       error: (err) => {

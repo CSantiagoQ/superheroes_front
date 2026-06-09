@@ -9,12 +9,20 @@ export class AuthGuard implements CanActivate {
   private router = inject(Router);
 
   canActivate(): boolean {
+    const hasBrowserStorage =
+      typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+
+    if (!hasBrowserStorage) {
+      // En SSR no podemos validar el token desde localStorage, así que dejamos que
+      // el cliente complete la navegación y valide después.
+      return true;
+    }
+
     if (this.authService.isLoggedIn()) {
       return true; // Deja pasar al usuario
-    } else {
-      // Si no hay token, lo mandamos al login
-      this.router.navigate(['/login']);
-      return false;
     }
+
+    this.router.navigate(['/login']);
+    return false;
   }
 }

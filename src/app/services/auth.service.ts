@@ -24,10 +24,28 @@ export class AuthService {
       return;
     }
 
-    const savedUser = localStorage.getItem('user_name');
     const token = localStorage.getItem('token');
-    if (savedUser && token) {
-      this.currentUser.set({ nombre: savedUser });
+    const savedName = localStorage.getItem('user_name');
+    const savedUser = localStorage.getItem('user');
+
+    if (!token) {
+      return;
+    }
+
+    if (savedName) {
+      this.currentUser.set({ nombre: savedName });
+      return;
+    }
+
+    if (savedUser) {
+      try {
+        const parsedUser = JSON.parse(savedUser) as { nombre?: string };
+        if (parsedUser && parsedUser.nombre) {
+          this.currentUser.set({ nombre: parsedUser.nombre });
+        }
+      } catch {
+        // Ignore invalid stored user data
+      }
     }
   }
 
@@ -47,6 +65,9 @@ export class AuthService {
         if (res.token && this.hasLocalStorage()) {
           localStorage.setItem('token', res.token);
           localStorage.setItem('user', JSON.stringify(res.user));
+          if (res.nombre) {
+            localStorage.setItem('user_name', res.nombre);
+          }
         }
       })
     );
@@ -56,6 +77,7 @@ export class AuthService {
     if (this.hasLocalStorage()) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
+      localStorage.removeItem('user_name');
       localStorage.clear();
     }
 
@@ -63,7 +85,15 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.currentUser();
+    if (this.currentUser()) {
+      return true;
+    }
+
+    if (!this.hasLocalStorage()) {
+      return false;
+    }
+
+    return !!localStorage.getItem('token');
   }
 
   private hasLocalStorage(): boolean {

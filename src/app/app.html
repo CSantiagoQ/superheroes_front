@@ -4,21 +4,28 @@
       <span class="icon">🦸‍♂️</span>
       <strong>SuperHero App</strong>
     </div>
+
     <nav class="menu">
-      <a routerLink="/catalog" routerLinkActive="active" class="menu-item"> Catálogo </a>
-      <a routerLink="/user-registration" routerLinkActive="active" class="menu-item">
+      <button routerLink="/catalog" routerLinkActive="active" class="menu-item">Catálogo</button>
+      <button routerLink="/user-registration" routerLinkActive="active" class="menu-item">
         Alta de Usuarios
-      </a>
-      <a routerLink="/about" routerLinkActive="active" class="menu-item"> Sobre el Proyecto </a>
+      </button>
+      <button routerLink="/about" routerLinkActive="active" class="menu-item">
+        Sobre el Proyecto
+      </button>
+
       @if (!authService.currentUser()) {
         <button routerLink="/login" class="btn-login">Iniciar Sesión</button>
       } @else {
-        <a routerLink="/add-hero" class="btn-nav">➕ Nuevo Héroe</a>
-        <a routerLink="/favoritos" routerLinkActive="active" class="menu-item"> Mis Favoritos </a>
-        <div class="user-info">
+        <button routerLink="/add-hero" class="menu-item">➕ Nuevo Héroe</button>
+        <button routerLink="/favoritos" routerLinkActive="active" class="menu-item">
+          Mis Favoritos
+        </button>
+        <button (click)="logout()" class="btn-logout">Cerrar Sesión</button>
+
+        <!--         <div class="user-info">
           <span class="user-welcome">Hola, {{ authService.currentUser()?.nombre }}</span>
-          <button (click)="logout()" class="btn-logout">Cerrar Sesión</button>
-        </div>
+        </div> -->
       }
     </nav>
   </div>
@@ -27,7 +34,7 @@
   <router-outlet></router-outlet>
 </main>
 <footer class="main-footer">
-  <p>&copy; 2025 Superhero Project - Desarrollado con Angular & Knex.js</p>
+  <p>&copy; 2026 Superhero Project - Desarrollado con Angular & Knex.js</p>
 </footer>
 @if (notify.message()) {
   <div class="comic-toast" [ngClass]="notify.type()">
@@ -38,6 +45,60 @@
 }
 
 <style>
+  .logo {
+    background-color: #712ac2;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .menu {
+    background-color: #712ac2;
+  }
+
+  .menu-item {
+    width: 15%;
+    padding: 12px;
+    margin: 5px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    &:hover {
+      background: #ff99007c;
+    }
+    &:disabled {
+      background: #ccc;
+    }
+  }
+
+  .btn-login,
+  .btn-logout {
+    width: 15%;
+    float: right;
+    padding: 12px;
+    background: #ff9800;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    &:hover {
+      background: #ff99007c;
+    }
+    &:disabled {
+      background: #ccc;
+    }
+  }
+
+  .user-info {
+    float: right;
+  }
+
   .comic-toast {
     position: fixed;
     bottom: 30px;
@@ -78,5 +139,11 @@
       transform: scale(1) rotate(0deg);
       opacity: 1;
     }
+  }
+  .main-footer {
+    text-align: center;
+    color: #fff;
+    background-color: #712ac2;
+    padding: 0.5rem;
   }
 </style>

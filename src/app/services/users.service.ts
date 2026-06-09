@@ -15,7 +15,7 @@ interface RegisterUserResponse {
 
 @Injectable({ providedIn: 'root' })
 export class UsersService {
-  private apiUrl = '/api/users'; // El proxy lo redirigirá a tu backend
+  private apiUrl = 'api/auth/register'; // El proxy lo redirigirá a tu backend
   private http = inject(HttpClient);
 
   registerUser(userData: RegisterUserRequest): Observable<RegisterUserResponse> {

@@ -34,7 +34,7 @@ export class CatalogComponent implements OnInit {
         this.loading = false;
 
         this.cdr.detectChanges();
-        console.log('CatÃ¡logo renderizado con @for:', this.heroes);
+        // console.log('CatÃ¡logo renderizado con @for:', this.heroes);
       },
       error: (err: unknown) => {
         console.error('Error:', err);
@@ -45,7 +45,7 @@ export class CatalogComponent implements OnInit {
   }
   toggleFavorite(heroe: Heroe) {
     if (heroe.id == null) {
-      this.notify.show('No se pudo identificar el héroe seleccionado', 'error');
+      this.notify.show('No se pudo identificar el hï¿½roe seleccionado', 'error');
       return;
     }
 
@@ -76,7 +76,7 @@ export class CatalogComponent implements OnInit {
       return;
     }
     if (heroes.id == null) {
-      this.notify.show('No se pudo identificar el héroe seleccionado', 'error');
+      this.notify.show('No se pudo identificar el hï¿½roe seleccionado', 'error');
       return;
     }
 

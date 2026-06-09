@@ -37,7 +37,11 @@ export class HeroesService {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
-    return this.http.post<ApiMessageResponse>(`${this.API_URL}/heroes/favorites`, { heroId }, { headers });
+    return this.http.post<ApiMessageResponse>(
+      `${this.API_URL}/heroes/favorites`,
+      { heroId },
+      { headers }
+    );
   }
 
   createHero(hero: {
