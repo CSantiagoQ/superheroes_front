@@ -9,12 +9,12 @@
   --error: #a50f20; /* darker red for destructive */
 
   /* Keep large surfaces desaturated to reduce competing saturations */
-  --background: #F8FAFC; /* page canvas */
-  --surface: #FEFEFF; /* card surfaces slightly off-white */
+  --background: #f8fafc; /* page canvas */
+  --surface: #fefeff; /* card surfaces slightly off-white */
   --text: #111827;
   --muted: #7f8c8d;
-  --surface-border: rgba(16,24,40,0.06);
-  --shadow-color: rgba(2,6,23,0.08);
+  --surface-border: rgba(16, 24, 40, 0.06);
+  --shadow-color: rgba(2, 6, 23, 0.08);
 }
 
 /* Comic Classic palette — Dark theme */
@@ -30,6 +30,6 @@
   --surface: #111827;
   --text: #f8fafc;
   --muted: #9ca3af;
-  --surface-border: rgba(255,255,255,0.04);
-  --shadow-color: rgba(2,6,23,0.6);
+  --surface-border: rgba(255, 255, 255, 0.04);
+  --shadow-color: rgba(2, 6, 23, 0.6);
 }
