@@ -13,8 +13,25 @@ header {
   /* slightly desaturate primary on large header surfaces for better harmony */
   background-color: color-mix(in srgb, var(--primary) 85%, var(--surface) 15%);
   color: var(--surface);
-  padding: 20px;
-  text-align: center;
+  padding: 0 20px;
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+}
+
+header .container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ensure the top menu aligns horizontally */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 nav button {
   background-color: var(--accent);

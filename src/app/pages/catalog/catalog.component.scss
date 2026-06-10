@@ -104,7 +104,7 @@
     .power-tag {
       display: inline-block;
       background: var(--surface-border);
-      color: var(--primary);
+      color: var(--power-color);
       padding: 4px 12px;
       border-radius: 20px;
       font-size: 0.85rem;
@@ -115,13 +115,13 @@
     }
     .price-tag {
       display: block;
-      color: var(--success);
+      color: var(--accent);
       font-size: 1.2rem;
       margin-bottom: 12px;
     }
     .btn-cart {
       width: 100%;
-      background: var(--success);
+      background: var(--accent);
       color: var(--surface);
       border: none;
       border-radius: 6px;
@@ -130,7 +130,7 @@
       cursor: pointer;
       transition: background 0.2s;
       &:hover {
-        background: color-mix(in srgb, var(--success) 75%, black 25%);
+        background: color-mix(in srgb, var(--accent) 75%, black 25%);
       }
     }
   }

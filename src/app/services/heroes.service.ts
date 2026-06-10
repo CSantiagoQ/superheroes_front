@@ -29,6 +29,10 @@ export class HeroesService {
     return this.http.get<Heroe[]>(`${this.API_URL}/heroes/catalog`);
   }
 
+  getHeroDetail(heroId: number): Observable<Heroe> {
+    return this.http.get<Heroe>(`${this.API_URL}/heroes/detalle/${heroId}`);
+  }
+
   addFavorite(heroId: number): Observable<ApiMessageResponse> {
     const token = this.getToken();
     if (!token) {

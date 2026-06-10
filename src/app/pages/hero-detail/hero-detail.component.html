@@ -1,0 +1,36 @@
+@if (!loading && hero) {
+  <div class="hero-detail">
+    <div class="detail-card">
+      <div class="image-wrap">
+        <img
+          [src]="
+            hero.imagen_url
+              ? 'assets/images/' +
+                (hero.imagen_url.startsWith('/') ? hero.imagen_url.substring(1) : hero.imagen_url)
+              : 'assets/images/Placeholder.png'
+          "
+          [alt]="hero.nombre"
+        />
+      </div>
+      <div class="info">
+        <h2>{{ hero.nombre }}</h2>
+        <p class="power-tag">{{ hero.poder }}</p>
+        <ul class="attributes">
+          <li><strong>Fortaleza:</strong> {{ hero.fortaleza }}</li>
+          <li><strong>Resistencia:</strong> {{ hero.resistencia }}</li>
+          <li><strong>Debilidad:</strong> {{ hero.debilidad }}</li>
+        </ul>
+        <div class="price-row">
+          <span class="price">{{ hero.precio || 0 | currency: 'MXN' : 'symbol' : '1.2-2' }}</span>
+          <div class="actions">
+            <button class="btn" (click)="addToFavorites()">Añadir a favoritos</button>
+            <button class="btn" (click)="addToCart()">Agregar al carrito</button>
+            <button class="btn primary" (click)="buyNow()">Comprar ahora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="loader">Cargando...</div>
+}

@@ -1,0 +1,79 @@
+:root {
+}
+
+.hero-detail {
+  padding: 1rem;
+  .detail-card {
+    display: flex;
+    gap: 1rem;
+    background: var(--surface);
+    color: var(--text);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    padding: 1rem;
+    .image-wrap {
+      width: 260px;
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+    }
+    .info {
+      flex: 1;
+      h2 {
+        margin: 0 0 0.5rem 0;
+      }
+      .power-tag {
+        background: var(--power-color);
+        color: #fff;
+        display: inline-block;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+      .attributes {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1rem 0;
+        li {
+          margin-bottom: 0.25rem;
+        }
+      }
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        .price {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: var(--accent);
+        }
+        .actions {
+          margin-left: auto;
+          display: flex;
+          gap: 0.5rem;
+          .btn {
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            border: none;
+            background: var(--surface);
+            color: var(--text);
+            box-shadow: 0 2px 8px var(--shadow-color);
+            cursor: pointer;
+          }
+          .primary {
+            background: var(--accent);
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+.loader {
+  padding: 2rem;
+  text-align: center;
+}

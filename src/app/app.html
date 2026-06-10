@@ -1,8 +1,8 @@
 <nav class="navbar">
   <div class="container">
     <div class="logo" routerLink="/">
+      <strong>Super Commerce!</strong>
       <span class="icon">🦸‍♂️</span>
-      <strong>SuperHero App</strong>
     </div>
 
     <nav class="menu">
@@ -56,11 +56,17 @@
     background-color: var(--primary);
     color: var(--surface);
     text-align: center;
+    gap: 12px;
+    padding: 12px 18px;
+    min-height: 56px;
     font-size: 2rem;
   }
 
   .menu {
     background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
 
   .menu-item {
@@ -155,12 +161,14 @@
   }
 
   .btn-theme {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: #fff;
-    padding: 8px 10px;
+    background: var(--primary);
+    color: var(--surface);
+    border: none;
+    padding: 10px 14px;
     margin-left: 8px;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.05rem;
+    box-shadow: 0 4px 8px var(--shadow-color);
   }
 </style>

@@ -10,8 +10,10 @@ import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { AddHeroComponent } from './pages/add-hero/add-hero.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { OrdersComponent } from './pages/orders/orders.component';
+import { HeroDetailComponent } from './pages/hero-detail/hero-detail.component';
 export const routes: Routes = [
   { path: 'catalog', component: CatalogComponent }, // canActivate: [AuthGuard]
+  { path: 'hero/:id', component: HeroDetailComponent },
   { path: 'user-registration', component: UserRegistrationComponent },
   { path: 'add-hero', component: AddHeroComponent, canActivate: [AuthGuard] },
   { path: 'about', component: AboutComponent },

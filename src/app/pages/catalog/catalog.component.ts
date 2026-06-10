@@ -165,4 +165,9 @@ export class CatalogComponent implements OnInit {
       },
     });
   }
+
+  openDetail(heroe: Heroe) {
+    if (heroe.id == null) return;
+    this.router.navigate(['/hero', heroe.id]);
+  }
 }
