@@ -33,13 +33,37 @@ export class CatalogComponent implements OnInit {
     this.heroesService.getCatalog().subscribe({
       next: (data: Heroe[]) => {
         this.heroes = data;
-        this.loading = false;
+        if (this.authService.isLoggedIn()) {
+          this.markFavoriteHeroes();
+          return;
+        }
 
+        this.loading = false;
         this.cdr.detectChanges();
         // console.log('Catálogo renderizado con @for:', this.heroes);
       },
       error: (err: unknown) => {
         console.error('Error:', err);
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+    });
+  }
+  private markFavoriteHeroes() {
+    this.favService.getFavorites().subscribe({
+      next: (favorites) => {
+        const favoriteIds = new Set(
+          favorites.map((favorite) => favorite.id).filter((id): id is number => id != null)
+        );
+
+        this.heroes = this.heroes.map((heroe) => ({
+          ...heroe,
+          esFavorito: heroe.id != null && favoriteIds.has(heroe.id),
+        }));
+        this.loading = false;
+        this.cdr.detectChanges();
+      },
+      error: () => {
         this.loading = false;
         this.cdr.detectChanges();
       },
