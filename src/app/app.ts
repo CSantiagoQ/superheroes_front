@@ -22,6 +22,24 @@ export class App {
     if (this.hasLocalStorage()) {
       this.isLoggedIn = !!localStorage.getItem('token');
     }
+    this.restoreTheme();
+  }
+
+  toggleDark() {
+    if (typeof document === 'undefined') return;
+    const root = document.documentElement || document.body;
+    const isDark = root.classList.toggle('dark-theme');
+    try {
+      if (this.hasLocalStorage()) localStorage.setItem('darkTheme', String(isDark));
+    } catch (e) {}
+  }
+
+  restoreTheme() {
+    if (!this.hasLocalStorage()) return;
+    const val = localStorage.getItem('darkTheme');
+    if (val === 'true' && typeof document !== 'undefined') {
+      (document.documentElement || document.body).classList.add('dark-theme');
+    }
   }
 
   logout() {

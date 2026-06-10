@@ -5,15 +5,19 @@
 }
 
 .about-content {
-  background: linear-gradient(135deg, rgba(200, 16, 46, 0.05) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 8%, transparent) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
   padding: 2rem;
   border-radius: 8px;
-  border-left: 4px solid #c8102e;
+  border-left: 4px solid var(--accent);
 
   h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
-    color: #1a1a1a;
+    color: var(--text);
   }
 }
 
@@ -23,12 +27,12 @@
   h2 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: #333;
+    color: var(--text);
   }
 
   p {
     line-height: 1.6;
-    color: #555;
+    color: var(--muted);
     font-size: 1rem;
   }
 
@@ -40,14 +44,14 @@
       padding: 0.5rem 0;
       padding-left: 1.5rem;
       position: relative;
-      color: #555;
+      color: var(--muted);
       font-size: 1rem;
 
       &:before {
         content: '★';
         position: absolute;
         left: 0;
-        color: #c8102e;
+        color: var(--accent);
       }
     }
   }

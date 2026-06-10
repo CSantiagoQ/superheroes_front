@@ -3,12 +3,12 @@
   margin-bottom: 32px;
   h2 {
     font-size: 2.4rem;
-    color: #2c3e50;
+    color: var(--text);
     margin-bottom: 8px;
     font-weight: 800;
   }
   p {
-    color: #7f8c8d;
+    color: var(--muted);
     font-size: 1.05rem;
   }
 }
@@ -20,9 +20,9 @@
 }
 
 .order-card {
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow-color);
   overflow: hidden;
 }
 
@@ -32,24 +32,24 @@
   gap: 16px;
   align-items: center;
   padding: 18px;
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid var(--surface-border);
   h3 {
     margin: 0 0 4px;
-    color: #2c3e50;
+    color: var(--text);
   }
   span {
-    color: #7f8c8d;
+    color: var(--muted);
     font-size: 0.9rem;
   }
   strong {
     text-align: right;
-    color: #27ae60;
+    color: var(--success);
     font-size: 1.2rem;
   }
 }
 
 .status {
-  background: #f1c40f;
+  background: var(--warning);
   color: #000;
   border-radius: 20px;
   padding: 6px 10px;
@@ -57,8 +57,8 @@
   font-size: 0.85rem;
   font-weight: bold;
   &.delivered {
-    background: #2ecc71;
-    color: #fff;
+    background: var(--success);
+    color: var(--surface);
   }
 }
 
@@ -74,27 +74,27 @@
   grid-template-columns: 64px minmax(0, 1fr);
   gap: 12px;
   align-items: center;
-  background: #f8f9fa;
+  background: var(--background);
   border-radius: 8px;
   padding: 10px;
   img {
     width: 64px;
     height: 64px;
     object-fit: contain;
-    background: #e9ecef;
+    background: var(--surface-border);
     border-radius: 6px;
   }
   h4 {
     margin: 0 0 4px;
-    color: #2c3e50;
+    color: var(--text);
   }
   p {
     margin: 0 0 4px;
-    color: #7f8c8d;
+    color: var(--muted);
     font-size: 0.9rem;
   }
   span {
-    color: #27ae60;
+    color: var(--success);
     font-weight: bold;
   }
 }
@@ -104,8 +104,8 @@
   text-align: center;
   padding: 50px;
   font-size: 1.1rem;
-  color: #7f8c8d;
-  background: #fff;
+  color: var(--muted);
+  background: var(--surface);
   border-radius: 12px;
   margin-top: 20px;
 }

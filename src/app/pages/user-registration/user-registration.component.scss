@@ -4,17 +4,17 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #34495e;
+    color: var(--text);
   }
 
   input {
     width: 100%;
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid var(--surface-border);
     border-radius: 8px;
     transition: border-color 0.3s;
     &:focus {
-      border-color: #e74c3c;
+      border-color: var(--error);
       outline: none;
     }
   }
@@ -23,20 +23,20 @@
 .btn-submit {
   width: 100%;
   padding: 15px;
-  background-color: #e74c3c;
-  color: white;
+  background-color: var(--error);
+  color: var(--surface);
   border: none;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
   &:disabled {
-    background-color: #bdc3c7;
+    background-color: var(--muted);
     cursor: not-allowed;
   }
 }
 .error {
-  color: #e74c3c;
+  color: var(--error);
   font-size: 0.8rem;
   margin-top: 5px;
   display: block;
@@ -48,27 +48,27 @@
   text-align: center;
 }
 .msg-success {
-  background: #d4edda;
-  color: #155724;
+  background: rgba(22, 163, 74, 0.08);
+  color: var(--success);
 }
 .msg-error {
-  background: #f8d7da;
-  color: #721c24;
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--error);
 }
 .registration-container {
   max-width: 500px;
   margin: 40px auto;
   padding: 30px;
-  background: white;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px var(--shadow-color);
   text-align: center;
   h2 {
-    color: #2c3e50;
+    color: var(--text);
     margin-bottom: 10px;
   }
   p {
-    color: #7f8c8d;
+    color: var(--muted);
     margin-bottom: 30px;
   }
 }

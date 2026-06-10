@@ -3,12 +3,12 @@
   margin-bottom: 32px;
   h2 {
     font-size: 2.4rem;
-    color: #2c3e50;
+    color: var(--text);
     margin-bottom: 8px;
     font-weight: 800;
   }
   p {
-    color: #7f8c8d;
+    color: var(--muted);
     font-size: 1.05rem;
   }
 }
@@ -27,9 +27,9 @@
 }
 
 .cart-item {
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow-color);
   display: grid;
   grid-template-columns: 90px minmax(0, 1fr) 130px 120px 100px;
   gap: 16px;
@@ -39,21 +39,21 @@
     width: 90px;
     height: 90px;
     object-fit: contain;
-    background: #f0f0f0;
+    background: var(--background);
     border-radius: 8px;
   }
   .item-info {
     h3 {
       margin: 0 0 6px;
-      color: #2c3e50;
+      color: var(--text);
     }
     p {
       margin: 0 0 8px;
-      color: #7f8c8d;
+      color: var(--muted);
       font-size: 0.9rem;
     }
     strong {
-      color: #27ae60;
+      color: var(--success);
     }
   }
 }
@@ -68,8 +68,8 @@
     height: 32px;
     border: none;
     border-radius: 6px;
-    background: #ff9800;
-    color: #fff;
+    background: var(--accent);
+    color: var(--surface);
     font-weight: bold;
     cursor: pointer;
   }
@@ -81,14 +81,14 @@
 }
 
 .item-subtotal {
-  color: #2c3e50;
+  color: var(--text);
   font-weight: 800;
   text-align: right;
 }
 
 .btn-remove {
-  background: #e74c3c;
-  color: white;
+  background: var(--error);
+  color: var(--surface);
   border: none;
   border-radius: 6px;
   padding: 10px;
@@ -97,17 +97,17 @@
 }
 
 .cart-summary {
-  background: #ffffff;
+  background: var(--surface);
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px var(--shadow-color);
   padding: 20px;
   h3 {
     margin: 0 0 12px;
-    color: #2c3e50;
+    color: var(--text);
   }
   strong {
     display: block;
-    color: #27ae60;
+    color: var(--success);
     font-size: 1.8rem;
     margin-bottom: 18px;
   }
@@ -116,15 +116,15 @@
 .btn-checkout,
 .empty-msg button {
   width: 100%;
-  background: #27ae60;
-  color: white;
+  background: var(--success);
+  color: var(--surface);
   border: none;
   border-radius: 6px;
   padding: 12px;
   font-weight: bold;
   cursor: pointer;
   &:disabled {
-    background: #ccc;
+    background: var(--muted);
     cursor: not-allowed;
   }
 }
@@ -134,8 +134,8 @@
   text-align: center;
   padding: 50px;
   font-size: 1.1rem;
-  color: #7f8c8d;
-  background: #fff;
+  color: var(--muted);
+  background: var(--surface);
   border-radius: 12px;
   margin-top: 20px;
 }

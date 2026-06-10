@@ -1,20 +1,24 @@
+@import './styles/_theme.scss';
+
 /* You can add global styles to this file, and also import other style files */
 body {
   font-family: sans-serif;
 
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9;
+  background-color: var(--background);
+  color: var(--text);
 }
 header {
-  background-color: #3f51b5;
-  color: white;
+  /* slightly desaturate primary on large header surfaces for better harmony */
+  background-color: color-mix(in srgb, var(--primary) 85%, var(--surface) 15%);
+  color: var(--surface);
   padding: 20px;
   text-align: center;
 }
 nav button {
-  background-color: #ff9800;
-  color: white;
+  background-color: var(--accent);
+  color: var(--surface);
   border: none;
   padding: 10px 20px;
   margin: 5px;
@@ -23,7 +27,7 @@ nav button {
   transition: background-color 0.3s;
 }
 nav button:hover {
-  background-color: #f57c00;
+  background-color: color-mix(in srgb, var(--accent) 70%, black 30%);
 }
 main {
   padding: 20px;
@@ -39,11 +43,11 @@ main {
   margin-top: 20px;
 }
 .hero-card {
-  background-color: white;
-  border: 1px solid #ddd;
+  background-color: var(--surface);
+  border: 1px solid var(--surface-border);
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px var(--shadow-color);
   transition: transform 0.2s;
 }
 .hero-card:hover {
@@ -60,7 +64,7 @@ main {
 }
 .hero-content h3 {
   margin-top: 0;
-  color: #3f51b5;
+  color: var(--primary);
 }
 .hero-content p {
   font-size: 0.9em;

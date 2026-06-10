@@ -1,0 +1,35 @@
+/* Theme variables for light and dark modes */
+/* Comic Classic palette — Light theme */
+:root {
+  --primary: #c8102e; /* bold comic red */
+  --secondary: #1e90ff; /* comic blue */
+  --accent: #f1c40f; /* bright yellow accent */
+  --success: #16a34a;
+  --warning: #eab308;
+  --error: #a50f20; /* darker red for destructive */
+
+  /* Keep large surfaces desaturated to reduce competing saturations */
+  --background: #F8FAFC; /* page canvas */
+  --surface: #FEFEFF; /* card surfaces slightly off-white */
+  --text: #111827;
+  --muted: #7f8c8d;
+  --surface-border: rgba(16,24,40,0.06);
+  --shadow-color: rgba(2,6,23,0.08);
+}
+
+/* Comic Classic palette — Dark theme */
+.dark-theme {
+  --primary: #ff6b6b; /* softer red on dark */
+  --secondary: #60a5fa;
+  --accent: #fbbf24;
+  --success: #22c55e;
+  --warning: #facc15;
+  --error: #f87171;
+
+  --background: #0f172a;
+  --surface: #111827;
+  --text: #f8fafc;
+  --muted: #9ca3af;
+  --surface-border: rgba(255,255,255,0.04);
+  --shadow-color: rgba(2,6,23,0.6);
+}

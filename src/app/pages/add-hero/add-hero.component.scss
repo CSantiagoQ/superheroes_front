@@ -3,9 +3,9 @@
   margin: 2rem auto;
 
   padding: 2rem;
-  background: #fff;
+  background: var(--surface);
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px var(--shadow-color);
   .main-layout {
     display: grid;
     grid-template-columns: 1fr 1.5fr;
@@ -15,14 +15,14 @@
   // --- SECCIÓN DE PREVISUALIZACIÓN ---
   .preview-section {
     .preview-card {
-      background: #f8f9fa;
+      background: var(--background);
       border-radius: 12px;
       overflow: hidden; // Crucial para que la imagen no se salga de las esquinas redondeadas
-      border: 1px solid #eee;
+      border: 1px solid var(--surface-border);
       .image-container {
         width: 100%;
         height: 300px; // Altura fija para mantener la proporción de la carta
-        background: #e9ecef;
+        background: var(--surface-border);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -39,20 +39,20 @@
         text-align: center;
         h4 {
           margin: 0;
-          color: #2c3e50;
+          color: var(--text);
           font-size: 1.2rem;
         }
         p {
           margin: 5px 0 0;
-          color: #7f8c8d;
+          color: var(--muted);
           font-size: 0.9rem;
         }
         p:last-child {
-          color: #27ae60;
+          color: var(--success);
           font-weight: bold;
         }
         span {
-          color: #3498db;
+          color: var(--primary);
           font-weight: bold;
           font-size: 0.9rem;
         }
@@ -76,14 +76,14 @@
         font-size: 0.85rem;
         font-weight: bold;
         margin-bottom: 4px;
-        color: #555;
+        color: var(--text);
       }
       input {
         padding: 10px;
-        border: 1.5px solid #ddd;
+        border: 1.5px solid var(--surface-border);
         border-radius: 6px;
         &:focus {
-          border-color: #3498db;
+          border-color: var(--primary);
           outline: none;
         }
       }
@@ -93,8 +93,8 @@
         gap: 10px;
         margin-top: 8px;
         .btn-browse {
-          background: #34495e;
-          color: white;
+          background: var(--primary);
+          color: var(--surface);
           padding: 8px 15px;
           border: none;
           border-radius: 4px;
@@ -102,12 +102,12 @@
           font-size: 0.8rem;
           white-space: nowrap;
           &:hover {
-            background: #2c3e50;
+            background: color-mix(in srgb, var(--primary) 70%, black 30%);
           }
         }
         .file-name {
           font-size: 0.8rem;
-          color: #27ae60;
+          color: var(--success);
           font-weight: bold;
           overflow: hidden;
           text-overflow: ellipsis; // Si el nombre es muy largo, pone puntos suspensivos
@@ -116,8 +116,8 @@
     }
     .btn-submit {
       margin-top: 10px;
-      background: #27ae60;
-      color: white;
+      background: var(--success);
+      color: var(--surface);
       padding: 12px;
       border: none;
       border-radius: 6px;
@@ -125,11 +125,11 @@
       cursor: pointer;
       transition: background 0.2s;
       &:disabled {
-        background: #ccc;
+        background: var(--muted);
         cursor: not-allowed;
       }
       &:hover:not(:disabled) {
-        background: #219150;
+        background: color-mix(in srgb, var(--success) 75%, black 25%);
       }
     }
   }
