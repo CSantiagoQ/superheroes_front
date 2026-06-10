@@ -1,0 +1,48 @@
+<div class="cart-header">
+  <h2>Mi Carrito</h2>
+  <p>Revisa tus heroes antes de confirmar el pedido.</p>
+</div>
+
+@if (loading) {
+  <div class="loader">Cargando carrito...</div>
+} @else if (cartItems.length > 0) {
+  <div class="cart-layout">
+    <div class="cart-list">
+      @for (item of cartItems; track item.id) {
+        <div class="cart-item">
+          <img
+            [src]="item.imagen_url ? 'assets/images/' + item.imagen_url : 'assets/images/Placeholder.png'"
+            [alt]="item.nombre"
+          />
+          <div class="item-info">
+            <h3>{{ item.nombre }}</h3>
+            <p>{{ item.poder }}</p>
+            <strong>{{ item.precio || 0 | currency: 'MXN' : 'symbol' : '1.2-2' }}</strong>
+          </div>
+          <div class="quantity-controls">
+            <button type="button" (click)="decrement(item)">-</button>
+            <span>{{ item.quantity }}</span>
+            <button type="button" (click)="increment(item)">+</button>
+          </div>
+          <div class="item-subtotal">
+            {{ getSubtotal(item) | currency: 'MXN' : 'symbol' : '1.2-2' }}
+          </div>
+          <button type="button" class="btn-remove" (click)="remove(item)">Eliminar</button>
+        </div>
+      }
+    </div>
+
+    <aside class="cart-summary">
+      <h3>Total</h3>
+      <strong>{{ total | currency: 'MXN' : 'symbol' : '1.2-2' }}</strong>
+      <button type="button" class="btn-checkout" [disabled]="checkoutLoading" (click)="checkout()">
+        {{ checkoutLoading ? 'Procesando...' : 'Realizar checkout' }}
+      </button>
+    </aside>
+  </div>
+} @else {
+  <div class="empty-msg">
+    <p>Tu carrito esta vacio.</p>
+    <button type="button" (click)="goToCatalog()">Ver catalogo</button>
+  </div>
+}
