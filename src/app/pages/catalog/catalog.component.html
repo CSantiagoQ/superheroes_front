@@ -33,6 +33,12 @@
         <div class="card-content">
           <h3>{{ heroe.nombre }}</h3>
           <p class="power-tag">{{ heroe.poder }}</p>
+          <strong class="price-tag">
+            {{ heroe.precio || 0 | currency: 'MXN' : 'symbol' : '1.2-2' }}
+          </strong>
+          <button type="button" class="btn-cart" (click)="addToCart(heroe)">
+            Agregar al carrito
+          </button>
         </div>
       </div>
     }

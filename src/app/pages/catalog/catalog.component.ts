@@ -7,6 +7,7 @@ import { HeroesService, Heroe } from '../../services/heroes.service';
 import { AuthService } from '../../services/auth.service';
 import { NotifyService } from '../../services/notify.service';
 import { FavoritesService } from '../../services/favorites.service';
+import { CartService } from '../../services/cart.service';
 @Component({
   selector: 'app-catalog',
   standalone: true,
@@ -19,6 +20,7 @@ export class CatalogComponent implements OnInit {
   private router = inject(Router);
   private notify = inject(NotifyService);
   private favService = inject(FavoritesService);
+  private cartService = inject(CartService);
   private heroesService = inject(HeroesService);
   private cdr = inject(ChangeDetectorRef);
   heroes: Heroe[] = [];
@@ -109,6 +111,32 @@ export class CatalogComponent implements OnInit {
         } else {
           this.notify.show('Error al añadir a favoritos ❌', 'error');
           console.error('Error al añadir a favoritos:', err);
+        }
+      },
+    });
+  }
+
+  addToCart(heroe: Heroe) {
+    if (!this.authService.isLoggedIn()) {
+      this.notify.show('Inicia sesion primero para agregar al carrito', 'info');
+      return;
+    }
+    if (heroe.id == null) {
+      this.notify.show('No se pudo identificar el heroe seleccionado', 'error');
+      return;
+    }
+
+    this.cartService.addToCart(heroe.id).subscribe({
+      next: () => {
+        this.notify.show(`${heroe.nombre} agregado al carrito`, 'success');
+      },
+      error: (err: { status?: number }) => {
+        if (err.status === 401) {
+          this.notify.show('Tu sesion ha expirado. Por favor, inicia sesion de nuevo', 'error');
+          this.authService.logout();
+          this.router.navigate(['/login']);
+        } else {
+          this.notify.show('Error al agregar al carrito', 'error');
         }
       },
     });

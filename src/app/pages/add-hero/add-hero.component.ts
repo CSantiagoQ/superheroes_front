@@ -20,6 +20,7 @@ export class AddHeroComponent {
     resistencia: '',
     debilidad: '',
     imagen_url: '',
+    precio: 0,
   };
   private heroService = inject(HeroesService);
   private notify = inject(NotifyService);

@@ -113,6 +113,26 @@
 
       border: 1px solid #d1d9e6;
     }
+    .price-tag {
+      display: block;
+      color: #27ae60;
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+    }
+    .btn-cart {
+      width: 100%;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      &:hover {
+        background: #219150;
+      }
+    }
   }
 }
 .loader,

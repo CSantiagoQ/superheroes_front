@@ -10,6 +10,7 @@ export interface Heroe {
   resistencia: string;
   debilidad: string;
   imagen_url: string;
+  precio?: number | string;
   esFavorito?: boolean;
 }
 
@@ -51,6 +52,7 @@ export class HeroesService {
     resistencia: string;
     debilidad: string;
     imagen_url: string;
+    precio?: number | string;
   }): Observable<Heroe> {
     if (
       !hero.nombre ||
@@ -58,7 +60,8 @@ export class HeroesService {
       !hero.fortaleza ||
       !hero.resistencia ||
       !hero.debilidad ||
-      !hero.imagen_url
+      !hero.imagen_url ||
+      hero.precio == null
     ) {
       return throwError(() => new Error('Todos los campos del heroe son obligatorios'));
     }
